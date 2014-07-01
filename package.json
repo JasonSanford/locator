@@ -1,0 +1,28 @@
+{
+  "name": "tasker",
+  "version": "0.0.0",
+  "description": "I'm not sure yet.",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JasonSanford/tasker.git"
+  },
+  "keywords": [
+  ],
+  "author": "Jason Sanford",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JasonSanford/i-caught-a/issues"
+  },
+  "homepage": "https://github.com/JasonSanford/i-caught-a",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "express": "3.4.x",
+    "logfmt": "0.21.x"
+  }
+}
