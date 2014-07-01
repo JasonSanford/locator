@@ -5,18 +5,18 @@ port = Number process.env.PORT or 5000
 
 app = express()
 app.use logfmt.requestLogger()
-app.use(function(req, res, next) {
-  req.rawBody = '';
-  req.setEncoding('utf8');
+app.use((req, res, next) ->
+  req.rawBody = ''
+  req.setEncoding('utf8')
 
-  req.on('data', function(chunk) { 
+  req.on('data', (chunk) ->
     req.rawBody += chunk;
-  });
+  )
 
-  req.on('end', function() {
+  req.on('end', ->
     next();
-  });
-});
+  )
+)
 app.use express.bodyParser()
 
 app.get '/', (req, resp) ->
