@@ -15,15 +15,16 @@
   "author": "Jason Sanford",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JasonSanford/i-caught-a/issues"
+    "url": "https://github.com/JasonSanford/tasker/issues"
   },
-  "homepage": "https://github.com/JasonSanford/i-caught-a",
+  "homepage": "https://github.com/JasonSanford/tasker",
   "engines": {
     "node": "0.10.x"
   },
   "dependencies": {
     "express": "3.4.x",
     "logfmt": "0.21.x",
-    "coffee-script": "1.7.1"
+    "coffee-script": "1.7.1",
+    "request": "2.36.x"
   }
 }
