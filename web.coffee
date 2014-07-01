@@ -5,7 +5,7 @@ port = Number process.env.PORT or 5000
 
 app = express()
 app.use logfmt.requestLogger()
-app.use express.bodyParser()
+#app.use express.bodyParser()
 
 app.get '/', (req, resp) ->
   resp.send 'You should POST to me.'
