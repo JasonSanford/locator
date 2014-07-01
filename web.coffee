@@ -7,6 +7,9 @@ app = express()
 app.use logfmt.requestLogger()
 app.use express.bodyParser()
 
+app.get '/', (req, resp) ->
+  resp.send 'You should POST to me.'
+
 app.post '/', (req, resp) ->
   payload = req.body
   processPayload payload
