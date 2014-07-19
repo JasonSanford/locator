@@ -22,7 +22,7 @@ app.post '/', (req, resp) ->
 app.listen port, ->
   console.log "Listening on port: #{port}"
 
-fulcrum = new Fulcrum({api_key: constants.fulcrum_api_key})
+fulcrum = new Fulcrum({api_key: api_key})
 
 processPayload = (payload) ->
   record = payloadToRecord payload
