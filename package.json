@@ -25,6 +25,6 @@
     "express": "3.4.x",
     "logfmt": "0.21.x",
     "coffee-script": "1.7.1",
-    "request": "2.36.x"
+    "fulcrum-app": "0.1.x"
   }
 }

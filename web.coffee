@@ -1,6 +1,6 @@
 express = require 'express'
 logfmt = require 'logfmt'
-request = require 'request'
+Fulcrum = require 'fulcrum-app'
 
 constants = require './constants'
 
@@ -21,6 +21,8 @@ app.post '/', (req, resp) ->
 
 app.listen port, ->
   console.log "Listening on port: #{port}"
+
+fulcrum = new Fulcrum({api_key: constants.fulcrum_api_key})
 
 processPayload = (payload) ->
   record = payloadToRecord payload
@@ -43,19 +45,11 @@ payloadToRecord = (payload) ->
 
   record
 
-createFulcrumRecord = (record) ->
-  options =
-    url: 'https://api.fulcrumapp.com/api/v2/records'
-    method: 'POST'
-    json: record
-    headers: {
-      'X-ApiToken': api_key
-    }
-
-  callback = (error, response, body) ->
+createFulcrumRecord = (record_to_create) ->
+  callback = (error, record) ->
     if error
       console.log "Error: #{error}"
     else
-      console.log 'I think we just created a record?!'
+      console.log "Record created: #{record}"
 
-  request options, callback
+  fulcrum.records.create record_to_create, callback
