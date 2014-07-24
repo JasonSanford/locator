@@ -27,6 +27,7 @@ fulcrum = new Fulcrum({api_key: api_key})
 processPayload = (payload) ->
   record = payloadToRecord payload
   createFulcrumRecord record
+  updateLastLocation record
 
 payloadToRecord = (payload) ->
   coordinates = payload.location.split(',').map(parseFloat)
@@ -50,6 +51,15 @@ createFulcrumRecord = (record_to_create) ->
     if error
       console.log "Error: #{error}"
     else
-      console.log "Record created: #{record}"
+      console.log "Record created: #{record.record.id}"
 
   fulcrum.records.create record_to_create, callback
+
+updateLastLocation = (record_to_update) ->
+  callback = (error, record) ->
+    if error
+      console.log "Error: #{error}"
+    else
+      console.log "Record updated: #{record.record.id}"
+
+  fulcrum.records.update constants.last_location_record_id, record_to_update, callback
