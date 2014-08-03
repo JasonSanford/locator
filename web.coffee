@@ -40,8 +40,6 @@ payloadToRecord = (payload) ->
     }
   }
 
-  record.record.form_values[constants.field_cell] = payload.cell
-  record.record.form_values[constants.field_cell_signal_strength] = payload.cell_signal_strength
   record.record.form_values[constants.field_accuracy] = payload.location_accuracy
 
   record
