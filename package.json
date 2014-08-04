@@ -10,8 +10,7 @@
     "type": "git",
     "url": "git://github.com/JasonSanford/tasker.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "Jason Sanford",
   "license": "MIT",
   "bugs": {
@@ -25,6 +24,8 @@
     "express": "3.4.x",
     "logfmt": "0.21.x",
     "coffee-script": "1.7.1",
-    "fulcrum-app": "0.1.1"
+    "fulcrum-app": "0.1.1",
+    "turf-point": "~0.1.1",
+    "turf-distance": "~0.1.4"
   }
 }
