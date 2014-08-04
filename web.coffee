@@ -73,7 +73,7 @@ checkLocationChanged = (new_location_record) ->
 
     distance_between = distance last_record_point, new_location_point, 'kilometers'
     if distance_between <= constants.minimum_location_change_distance
-      console.log "Not creating a new record because distance form last location (#{distance_between}) was less than the minimum distance (#{constants.minimum_location_change_distance})."
+      console.log "Not creating a new record because distance from last location (#{distance_between} km) was less than the minimum distance recuired (#{constants.minimum_location_change_distance} km)."
     else
       console.log "User moved. Creating a new record."
       createFulcrumRecord new_location_record
