@@ -68,8 +68,8 @@ checkLocationChanged = (new_location_record) ->
     if error
       console.log "Error: #{error}"
       return
-    last_record_point  = point last_location_record.longitude, last_location_record.latitude
-    new_location_point = point new_location_record.longitude,  new_location_record.latitude
+    last_record_point  = point last_location_record.record.longitude, last_location_record.record.latitude
+    new_location_point = point new_location_record.record.longitude,  new_location_record.record.latitude
 
     distance_between = distance last_record_point, new_location_point, 'kilometers'
     if distance_between <= constants.minimum_location_change_distance
