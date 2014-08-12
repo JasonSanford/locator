@@ -63,7 +63,6 @@ updateLastLocation = (record_to_update, accuracy) ->
   record_to_update.form_values[constants.field_accuracy] = accuracy
   record_to_update =
     record: record_to_update
-  console.log JSON.stringify(record_to_update)
   fulcrum.records.update record_to_update.record.id, record_to_update, callback
 
 checkLocationChanged = (new_location_record) ->
@@ -78,7 +77,7 @@ checkLocationChanged = (new_location_record) ->
     distance_between = distance last_record_point, new_location_point, 'kilometers'
     if distance_between <= constants.minimum_location_change_distance
       console.log "Not creating a new record because distance from last location (#{distance_between} km) was less than the minimum distance recuired (#{constants.minimum_location_change_distance} km)."
-      updateLastLocation last_location_record, new_location_record.record.form_values
+      updateLastLocation last_location_record, new_location_record.record.form_values[constants.field_accuracy]
     else
       console.log "User moved. Creating a new record."
       createFulcrumRecord new_location_record
