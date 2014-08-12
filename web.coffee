@@ -69,7 +69,7 @@ checkLocationChanged = (new_location_record) ->
       console.log "Error: #{error}"
       return
     last_location_record = records.records[0]
-    last_record_point    = point last_location_record.record.longitude, last_location_record.record.latitude
+    last_record_point    = point last_location_record.longitude, last_location_record.latitude
     new_location_point   = point new_location_record.record.longitude,  new_location_record.record.latitude
 
     distance_between = distance last_record_point, new_location_point, 'kilometers'
