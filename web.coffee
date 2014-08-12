@@ -63,6 +63,7 @@ updateLastLocation = (record_to_update, accuracy) ->
   record_to_update.form_values[constants.field_accuracy] = accuracy
   record_to_update =
     record: record_to_update
+  console.log JSON.stringify(record_to_update)
   fulcrum.records.update record_to_update.record.id, record_to_update, callback
 
 checkLocationChanged = (new_location_record) ->
