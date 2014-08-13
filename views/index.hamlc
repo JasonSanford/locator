@@ -11,4 +11,4 @@
     #map-container
     %script{src: '//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'}
     %script{src: 'assets/js/leaflet.usermarker.js'}
-    %script{src: 'assets/js/main.js'}
+    %script{src: 'assets/js/bundle.js'}

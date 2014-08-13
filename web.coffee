@@ -16,8 +16,26 @@ app.use '/assets', express.static(__dirname + '/assets')
 
 app.engine 'hamlc', require('haml-coffee').__express
 
+fulcrum = new Fulcrum({api_key: api_key})
+
 app.get '/', (req, resp) ->
   resp.render 'index.hamlc', {}
+
+app.get '/current.geojson', (req, resp) ->
+  callback = (error, records) ->
+    if error
+      console.log error
+      resp.send 'Error'
+    record = records.records[0]
+    geojson = recordToFeature record
+    resp.json geojson
+
+  search_options =
+    form_id       : constants.form_id
+    newest_first  : 1
+    per_page      : 1
+    page          : 1
+  fulcrum.records.search search_options, callback
 
 app.post '/', (req, resp) ->
   payload = req.body
@@ -27,7 +45,19 @@ app.post '/', (req, resp) ->
 app.listen port, ->
   console.log "Listening on port: #{port}"
 
-fulcrum = new Fulcrum({api_key: api_key})
+recordToFeature = (record) ->
+  geometry =
+    type        : 'Point'
+    coordinates : [record.longitude, record.latitude]
+  properties =
+    accuracy : parseInt(record.form_values[constants.field_accuracy], 10)
+    created  : record.created_at
+    updated  : record.updated_at
+  feature =
+    type        : 'Feature'
+    geometry    : geometry
+    properties  : properties
+  feature
 
 processPayload = (payload) ->
   record = payloadToRecord payload

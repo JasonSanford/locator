@@ -4,7 +4,7 @@
   "description": "I'm not sure yet.",
   "main": "web.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify assets/js/main.js > assets/js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "fulcrum-app": "0.1.1",
     "turf-point": "~0.1.1",
     "turf-distance": "~0.1.4",
-    "haml-coffee": "~1.14.1"
+    "haml-coffee": "~1.14.1",
+    "xhr": "~1.14.1"
   }
 }
