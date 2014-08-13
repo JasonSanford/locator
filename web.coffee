@@ -12,6 +12,7 @@ api_key = constants.fulcrum_api_key
 app = express()
 app.use logfmt.requestLogger()
 app.use express.bodyParser()
+app.use '/assets', express.static(__dirname + '/assets')
 
 app.engine 'hamlc', require('haml-coffee').__express
 
