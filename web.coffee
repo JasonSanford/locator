@@ -13,8 +13,10 @@ app = express()
 app.use logfmt.requestLogger()
 app.use express.bodyParser()
 
+app.engine 'hamlc', require('haml-coffee').__express
+
 app.get '/', (req, resp) ->
-  resp.send 'You should POST to me.'
+  resp.render 'index.hamlc', {}
 
 app.post '/', (req, resp) ->
   payload = req.body
