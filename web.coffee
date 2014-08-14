@@ -27,14 +27,39 @@ app.get '/current.geojson', (req, resp) ->
       console.log error
       resp.send 'Error'
     record = records.records[0]
-    geojson = recordToFeature record
-    resp.json geojson
+    feature = recordToFeature record
+    resp.json feature
 
   search_options =
     form_id       : constants.form_id
     newest_first  : 1
     per_page      : 1
     page          : 1
+  fulcrum.records.search search_options, callback
+
+app.get '/:time(day|month).geojson', (req, resp) ->
+  callback = (error, records) ->
+    if error
+      console.log error
+      resp.send 'Error'
+    feature_collection =
+      type      : 'FeatureCollection'
+      features  : records.records.map((record) -> recordToFeature(record))
+    resp.json feature_collection
+
+  now         = new Date()
+  now_seconds = Math.floor(now.getTime() / 1000)
+
+  if req.params.time is 'day'
+    seconds_ago = 24 * 60 * 60
+  else
+    seconds_ago = 31 * 24 * 60 * 60
+
+  updated_since = now_seconds - seconds_ago
+
+  search_options =
+    form_id       : constants.form_id
+    updated_since : updated_since
   fulcrum.records.search search_options, callback
 
 app.post '/', (req, resp) ->

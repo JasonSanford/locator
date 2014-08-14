@@ -19,7 +19,7 @@ function getLocation(type) {
         }
         var loc = [geojson.geometry.coordinates[1], geojson.geometry.coordinates[0]];
         var marker = L.userMarker(loc, {pulsing: true, accuracy: geojson.properties.accuracy, smallIcon: true});
-        map.setView(loc, 10);
+        map.setView(loc, 12);
         marker.addTo(map);
       }
       xhr(xhr_options, callback);
