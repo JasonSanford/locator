@@ -8,7 +8,7 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiamNzYW5mb3JkIiwiYSI6InRJMHZPZFUifQ.F4DMGoNgU3
 
 var map = new L.mapbox.Map('map-container', 'jcsanford.j25ef8lg', {zoomControl: false});
 
-var current_marker, span_points;
+var current_marker, markers;
 
 function getLocation(type) {
   var loc, url, callback;
@@ -26,8 +26,8 @@ function getLocation(type) {
   if (current_marker) {
     map.removeLayer(current_marker);
   }
-  if (span_points) {
-    map.removeLayer(span_points);
+  if (markers) {
+    map.removeLayer(markers);
   }
 
   switch (type) {
@@ -47,25 +47,33 @@ function getLocation(type) {
     case 'day':
     case 'month':
       callback = function(geojson) {
-        if (span_points) {
-          span_points.clearLayers();
-          span_points.addData(geojson);
-        } else {
-          span_points = L.geoJson(geojson, {
-            pointToLayer: function (feature, lat_lng) {
-              return L.circleMarker(lat_lng, {
+        function addGeoJSON(geojson) {
+          var i, len, feature;
+          for (i = 0, len = geojson.features.length; i < len; i++) {
+            feature = geojson.features[i];
+            markers.addLayer(
+              L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {
                 radius: 5,
                 fillColor: "#ff7800",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
-              });
-            }
-          });
+              })
+            );
+          }
         }
-        map.fitBounds(span_points.getBounds());
-        span_points.addTo(map);
+        if (markers) {
+          markers.clearLayers();
+          addGeoJSON(geojson);
+        } else {
+          markers = L.markerClusterGroup({
+            showCoverageOnHover: false
+          });
+          addGeoJSON(geojson);
+        }
+        map.fitBounds(markers.getBounds());
+        markers.addTo(map);
       };
       url = type + '.geojson';
       break;

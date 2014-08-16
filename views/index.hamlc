@@ -5,6 +5,7 @@
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'}
     %link{href: '//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css', rel: 'stylesheet'}
     %link{href: 'assets/css/leaflet.usermarker.css', rel: 'stylesheet'}
+    %link{href: 'assets/css/leaflet.markercluster.css', rel: 'stylesheet'}
     %link{href: 'assets/css/app.css', rel: 'stylesheet'}
 
   %body
@@ -20,4 +21,5 @@
       #map
     %script{src: '//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'}
     %script{src: 'assets/js/leaflet.usermarker.js'}
+    %script{src: 'assets/js/leaflet.markercluster.js'}
     %script{src: 'assets/js/bundle.js'}
