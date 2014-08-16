@@ -51,8 +51,20 @@ function getLocation(type) {
           span_points.clearLayers();
           span_points.addData(geojson);
         } else {
-          span_points = L.geoJson(geojson);
+          span_points = L.geoJson(geojson, {
+            pointToLayer: function (feature, lat_lng) {
+              return L.circleMarker(lat_lng, {
+                radius: 5,
+                fillColor: "#ff7800",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+              });
+            }
+          });
         }
+        map.fitBounds(span_points.getBounds());
         span_points.addTo(map);
       };
       url = type + '.geojson';
