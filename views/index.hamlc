@@ -9,6 +9,15 @@
 
   %body
     #map-container
+      #buttons
+        .button-group
+          %a.current.button.active{data: {time: 'current'}, href: '#current'}
+            Current
+          %a.today.button{data: {time: 'day'}, href: '#today'}
+            Today
+          %a.month.button{data: {time: 'month'}, href: '#month'}
+            Month
+      #map
     %script{src: '//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'}
     %script{src: 'assets/js/leaflet.usermarker.js'}
     %script{src: 'assets/js/bundle.js'}

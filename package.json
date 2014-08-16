@@ -28,6 +28,6 @@
     "turf-point": "~0.1.1",
     "turf-distance": "~0.1.4",
     "haml-coffee": "~1.14.1",
-    "xhr": "~1.14.1"
+    "reqwest": "~1.1.2"
   }
 }

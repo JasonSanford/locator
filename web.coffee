@@ -42,10 +42,11 @@ app.get '/:time(day|month).geojson', (req, resp) ->
     if error
       console.log error
       resp.send 'Error'
-    feature_collection =
-      type      : 'FeatureCollection'
-      features  : records.records.map((record) -> recordToFeature(record))
-    resp.json feature_collection
+    else
+      feature_collection =
+        type      : 'FeatureCollection'
+        features  : records.records.map((record) -> recordToFeature(record))
+      resp.json feature_collection
 
   now         = new Date()
   now_seconds = Math.floor(now.getTime() / 1000)
