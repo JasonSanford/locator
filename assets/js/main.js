@@ -68,7 +68,9 @@ function getLocation(type) {
           addGeoJSON(geojson);
         } else {
           markers = L.markerClusterGroup({
-            showCoverageOnHover: false
+            showCoverageOnHover: false,
+            disableClusteringAtZoom: 14,
+            maxClusterRadius: 40
           });
           addGeoJSON(geojson);
         }
