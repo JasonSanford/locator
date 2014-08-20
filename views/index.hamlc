@@ -15,7 +15,7 @@
           %a.current.button.active{data: {time: 'current'}, href: '#current'}
             Current
           %a.today.button{data: {time: 'day'}, href: '#today'}
-            Today
+            Day
           %a.month.button{data: {time: 'month'}, href: '#month'}
             Month
       #map
