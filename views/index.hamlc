@@ -14,8 +14,10 @@
         .button-group
           %a.current.button.active{data: {time: 'current'}, href: '#current'}
             Current
-          %a.today.button{data: {time: 'day'}, href: '#today'}
+          %a.day.button{data: {time: 'day'}, href: '#day'}
             Day
+          %a.week.button{data: {time: 'week'}, href: '#week'}
+            Week
           %a.month.button{data: {time: 'month'}, href: '#month'}
             Month
       #map

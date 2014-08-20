@@ -45,6 +45,7 @@ function getLocation(type) {
       };
       break;
     case 'day':
+    case 'week':
     case 'month':
       callback = function(geojson) {
         function addGeoJSON(geojson) {

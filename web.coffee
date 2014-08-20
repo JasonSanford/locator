@@ -37,7 +37,7 @@ app.get '/current.geojson', (req, resp) ->
     page          : 1
   fulcrum.records.search search_options, callback
 
-app.get '/:time(day|month).geojson', (req, resp) ->
+app.get '/:time(day|month|week).geojson', (req, resp) ->
   callback = (error, records) ->
     if error
       console.log error
@@ -53,7 +53,9 @@ app.get '/:time(day|month).geojson', (req, resp) ->
 
   if req.params.time is 'day'
     seconds_ago = 24 * 60 * 60
-  else
+  else if req.params.time is 'week'
+    seconds_ago = 7 * 24 * 60 * 60
+  else  # month
     seconds_ago = 31 * 24 * 60 * 60
 
   updated_since = now_seconds - seconds_ago
